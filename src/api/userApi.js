@@ -7,7 +7,8 @@ export const registerUser = async (userData) => {
         const response = await axios.post(BASE_URL, userData, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
         });
         return response.data;
     } catch (error) {
@@ -33,7 +34,8 @@ export const loginUser = async (userData) => {
         const response = await axios.post(LOGIN_URL, userData, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
         });
         return response.data;
     } catch (error) {

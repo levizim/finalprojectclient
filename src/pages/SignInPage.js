@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
-import { loginUser as apiLoginUser } from '../api/userApi'; // Import the function
+import { loginUser as apiLoginUser } from '../api/userApi'; 
+import { useAuth } from '../sessions/authContext'; // Import the hook
 
 function SignInPage() {
     const [email, setEmail] = useState('');
@@ -9,15 +10,17 @@ function SignInPage() {
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
 
+    const { setCurrentUser } = useAuth(); // Destructure the method
+
     const handleLogin = async () => {
         try {
             const user = await apiLoginUser({ email, password });
             console.log("User logged in:", user);
             
+            setCurrentUser(user); // Set the current user upon successful login
+
             // Reset any login errors upon successful login
             setLoginError('');
-
-            // Navigate to the user's page
             navigate('/user');  
         } catch (error) {
             console.error("Error during login:", error.message);

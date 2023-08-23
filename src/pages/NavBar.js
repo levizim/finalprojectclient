@@ -1,9 +1,12 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import { useAuth } from "../sessions/authContext"; // Update with your actual path to the authContext file
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function NavBar() {
+    const { currentUser, logout } = useAuth();
+
     return (
         <Navbar bg="light" expand="lg">
             <LinkContainer to="/">
@@ -23,16 +26,26 @@ function NavBar() {
                     </LinkContainer>
                 </Nav>
                 <Nav className="ml-auto">
-                    <LinkContainer to="/signin">
-                        <Nav.Link>Sign In</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/adminlogin">
-                        <Nav.Link>Admin Login</Nav.Link>
-                    </LinkContainer>
-                    {/* Add the link to UserPage */}
-                    <LinkContainer to="/user">
-                        <Nav.Link>User</Nav.Link>
-                    </LinkContainer>
+                    {/* Conditionally render based on the presence of currentUser */}
+                    {!currentUser && (
+                        <>
+                            <LinkContainer to="/signin">
+                                <Nav.Link>Sign In</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/adminlogin">
+                                <Nav.Link>Admin Login</Nav.Link>
+                            </LinkContainer>
+                        </>
+                    )}
+                    {currentUser && (
+                        <>
+                            <LinkContainer to="/user">
+                                <Nav.Link>User</Nav.Link>
+                            </LinkContainer>
+                            {/* Logout button */}
+                            <Nav.Link onClick={logout}>Logout</Nav.Link>
+                        </>
+                    )}
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />

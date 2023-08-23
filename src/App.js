@@ -17,10 +17,13 @@ import IngredientsPage from "./pages/IngredientsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import RegisterUserPage from "./pages/RegisterUserPage";
 import Navigation from "./pages/NavBar";
+import { AuthProvider } from './sessions/authContext';
+import PrivateRoute from './sessions/PrivateRoute';
 
 function App() {
   return (
     <Router>
+      <AuthProvider>
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -29,7 +32,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/receipt" element={<ReceiptPage />} />
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="/user" element={<UserPage />} />
+        <Route path="/user" element={<PrivateRoute element={<UserPage />} />} />
         <Route path="/adminlogin" element={<AdminLoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/adminresponse" element={<AdminResponsePage />} />
@@ -40,6 +43,7 @@ function App() {
         <Route path="/register" element={<RegisterUserPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      </AuthProvider>
     </Router>
   );
 }
