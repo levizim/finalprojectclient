@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import { useAuth } from "../sessions/authContext"; // Update with your actual path to the authContext file
-import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from ".//images/logo.png"
 
 function NavBar() {
     const { currentUser, logout } = useAuth();
@@ -10,7 +10,13 @@ function NavBar() {
     return (
         <Navbar bg="light" expand="lg">
             <LinkContainer to="/">
-                <Navbar.Brand>YourLogo</Navbar.Brand>
+                <Navbar.Brand>  <img
+                        alt="Adaept Logo"
+                        src={logo}// Adjust if necessary based on your folder structure
+                        width="129"  // or adjust size as needed
+                        height="35" // or adjust size as needed
+                        className="d-inline-block align-top"
+                    /></Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
