@@ -1,6 +1,4 @@
 import React from "react";
-
-import Navigation from "./NavBar"; // Adjust the import path accordingly
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const IngredientsPage = () => {
@@ -15,7 +13,6 @@ const IngredientsPage = () => {
 
   return (
     <div>
-      <Navigation />
 
       <section className="container mt-4">
         {ingredients.map((ingredient, index) => (

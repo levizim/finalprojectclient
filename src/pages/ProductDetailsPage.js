@@ -1,7 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
-import Navigation from "./NavBar"; // Adjust the import path accordingly
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const ProductDetailsPage = () => {
@@ -22,8 +20,7 @@ const ProductDetailsPage = () => {
 
   return (
     <div>
-      <Navigation />
-
+      
       <section className="container mt-4">
         <div className="row">
           <div className="col-md-6">

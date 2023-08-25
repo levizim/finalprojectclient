@@ -1,22 +1,24 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
-import { useAuth } from "../sessions/authContext"; // Update with your actual path to the authContext file
-import logo from ".//images/logo.png"
+import { useAuth } from "../sessions/authContext";
+import logo from "./images/logo.png";
 
 function NavBar() {
     const { currentUser, logout } = useAuth();
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg">
             <LinkContainer to="/">
-                <Navbar.Brand>  <img
+                <Navbar.Brand>
+                    <img
                         alt="Adaept Logo"
-                        src={logo}// Adjust if necessary based on your folder structure
+                        src={logo}
                         width="129"  // or adjust size as needed
                         height="35" // or adjust size as needed
                         className="d-inline-block align-top"
-                    /></Navbar.Brand>
+                    />
+                </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -32,7 +34,6 @@ function NavBar() {
                     </LinkContainer>
                 </Nav>
                 <Nav className="ml-auto">
-                    {/* Conditionally render based on the presence of currentUser */}
                     {!currentUser && (
                         <>
                             <LinkContainer to="/signin">
@@ -48,14 +49,13 @@ function NavBar() {
                             <LinkContainer to="/user">
                                 <Nav.Link>User</Nav.Link>
                             </LinkContainer>
-                            {/* Logout button */}
                             <Nav.Link onClick={logout}>Logout</Nav.Link>
                         </>
                     )}
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>
+                    <Button variant="outline-light">Search</Button> {/* Changed to outline-light for visibility */}
                 </Form>
                 <Nav>
                     <LinkContainer to="/cart">

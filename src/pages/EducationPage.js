@@ -1,6 +1,4 @@
 import React from "react";
-
-import Navigation from "./NavBar"; // Adjust the import path accordingly
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const articleLinks = [
@@ -27,7 +25,6 @@ const articleLinks = [
 const EducationPage = () => {
   return (
     <div>
-      <Navigation />
 
       <section className="container mt-4">
         <h2>Education</h2>
