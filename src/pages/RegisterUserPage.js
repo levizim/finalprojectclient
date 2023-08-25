@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
-import { registerUser } from '../api/userApi';  // Assuming you have this path set up correctly
+import { registerUser } from '../api/userApi';
 
 function RegisterUserPage() {
     const [name, setName] = useState('');
@@ -9,39 +9,39 @@ function RegisterUserPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const handleRegister = async () => {
-      console.log("handle reg active");
-      if (password !== confirmPassword) {
-          console.log("Passwords do not match");
-          return;
-      }
-  
-      const userData = {
-          userName: name,
-          email: email,
-          password: password,
-          address: address
-      };
-  
-      try {
-          const response = await registerUser(userData);
-          if (response && response.message === 'User registered successfully') {
-              console.log('User registered successfully:', response);
-              navigate('/signin'); // Redirect to SignInPage
-          } else {
-              console.log('Error registering user:', response);
-          }
-      } catch (error) {
-          console.error('Error during registration:', error.message || error);
-      }
-  };
-  
+        console.log("handle reg active");
+        if (password !== confirmPassword) {
+            console.log("Passwords do not match");
+            return;
+        }
+
+        const userData = {
+            userName: name,
+            email: email,
+            password: password,
+            address: address
+        };
+
+        try {
+            const response = await registerUser(userData);
+            if (response && response.message === 'User registered successfully') {
+                console.log('User registered successfully:', response);
+                navigate('/signin');
+            } else {
+                console.log('Error registering user:', response);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error.message || error);
+        }
+    };
 
     return (
-        <div>
-            <Container className="mt-4">
-                <h1>Welcome to Adaept!</h1>
+        <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
+            <Container>
+                <h1 className="text-center mb-4">Welcome to Adaept!</h1>
                 <Form>
                     <Form.Group controlId="formName">
                         <Form.Label>Name</Form.Label>

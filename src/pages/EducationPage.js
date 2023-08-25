@@ -21,15 +21,14 @@ const articleLinks = [
     preview: "Dive into the world of medicinal mushrooms and their benefits...",
   },
 ];
-
 const EducationPage = () => {
   return (
-    <div>
+    <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
 
-      <section className="container mt-4">
-        <h2>Education</h2>
+      <section className="container ">
+        <h2 className="text-center py-3">Education</h2>
         {articleLinks.map((article) => (
-          <div key={article.title} className="card mb-3">
+          <div key={article.title} className="card bg-secondary mb-4">
             <div className="row g-0">
               <div className="col-md-4">
                 <img src={article.image} alt={article.title} className="img-fluid" />
@@ -48,10 +47,9 @@ const EducationPage = () => {
         ))}
       </section>
 
-      {/* Footer */}
-      {/* <Footer /> */}
     </div>
   );
 };
 
 export default EducationPage;
+

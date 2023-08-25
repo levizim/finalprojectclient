@@ -19,28 +19,27 @@ const ProductDetailsPage = () => {
   };
 
   return (
-    <div>
-      
-      <section className="container mt-4">
+    <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
+
+      <section className="container py-5">
         <div className="row">
-          <div className="col-md-6">
-            <img src={product.image} alt={product.name} className="img-fluid" />
-            <p className="mt-3">{product.description}</p>
+          <div className="col-md-6 mb-4">
+            <img src={product.image} alt={product.name} className="img-fluid rounded" />
+            <p className="mt-3 text-secondary">{product.description}</p>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 d-flex flex-column justify-content-center">
             <h2>{product.name}</h2>
-            <p>${product.price}</p>
+            <p className="display-4">${product.price}</p>
             <div className="form-group">
               <label htmlFor="quantity">Quantity:</label>
               <select className="form-control" id="quantity">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
-                {/* Add more options if needed */}
               </select>
             </div>
-            <button className="btn btn-primary mr-2">Add to Cart</button>
-            <button className="btn btn-success">Buy Now</button>
+            <button className="btn btn-primary my-2 mr-2">Add to Cart</button>
+            <button className="btn btn-success my-2">Buy Now</button>
           </div>
         </div>
       </section>
@@ -48,7 +47,7 @@ const ProductDetailsPage = () => {
       <section className="container mt-4">
         <h3>Reviews</h3>
         {product.reviews.map((review) => (
-          <div key={review.id} className="card mb-2">
+          <div key={review.id} className="card bg-secondary mb-3">
             <div className="card-body">
               <h5 className="card-title">{review.author}</h5>
               <p className="card-text">{review.comment}</p>
@@ -58,8 +57,7 @@ const ProductDetailsPage = () => {
         ))}
       </section>
 
-      {/* Footer */}
-      {/* <Footer /> */}
+
     </div>
   );
 };

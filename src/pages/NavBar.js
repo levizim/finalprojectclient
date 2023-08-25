@@ -8,14 +8,14 @@ function NavBar() {
     const { currentUser, logout } = useAuth();
 
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
             <LinkContainer to="/">
                 <Navbar.Brand>
                     <img
                         alt="Adaept Logo"
                         src={logo}
-                        width="129"  // or adjust size as needed
-                        height="35" // or adjust size as needed
+                        width="129"
+                        height="35"
                         className="d-inline-block align-top"
                     />
                 </Navbar.Brand>
@@ -33,7 +33,10 @@ function NavBar() {
                         <Nav.Link>Education</Nav.Link>
                     </LinkContainer>
                 </Nav>
-                <Nav className="ml-auto">
+                <Nav className="mr-2">
+                    <LinkContainer to="/cart">
+                        <Nav.Link>Cart</Nav.Link>
+                    </LinkContainer>
                     {!currentUser && (
                         <>
                             <LinkContainer to="/signin">
@@ -53,15 +56,20 @@ function NavBar() {
                         </>
                     )}
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-light">Search</Button> {/* Changed to outline-light for visibility */}
+                <Form inline className="d-flex">
+                    <FormControl 
+                        type="text" 
+                        placeholder="Search" 
+                        className="mr-0 border-right-0 rounded-left" 
+                        style={{ boxShadow: 'none' }} 
+                    />
+                    <Button 
+                        variant="outline-light" 
+                        className="p-0 border-left-0 rounded-right" 
+                        style={{ width: '40px', height: '40px', borderRadius: '0 5px 5px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <i className="fas fa-search"></i>
+                    </Button>
                 </Form>
-                <Nav>
-                    <LinkContainer to="/cart">
-                        <Nav.Link>Cart</Nav.Link>
-                    </LinkContainer>
-                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );

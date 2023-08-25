@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../sessions/authContext';
-import { updateUser } from '../api/userApi'; // Make sure to adjust the path based on your folder structure.
+import { updateUser } from '../api/userApi'; // Ensure the path is correctly set based on your folder structure.
 
 const EditUserPage = () => {
   const { currentUser } = useAuth();
@@ -10,6 +10,7 @@ const EditUserPage = () => {
   const [email, setEmail] = useState(currentUser?.email || '');
   const [address, setAddress] = useState(currentUser?.address || '');
   const navigate = useNavigate()
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -34,14 +35,15 @@ const EditUserPage = () => {
   };
 
   return (
-    <Container>
+    <Container fluid className="bg-dark text-white" style={{ minHeight: '100vh' }}>
       <Row className="justify-content-md-center">
         <Col md={6}>
-          <h2 className="mb-4">Edit Profile</h2>
+          <h2 className="mb-4 mt-4">Edit Profile</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
+                className="bg-dark text-white"
                 type="text"
                 placeholder="Enter username"
                 value={userName}
@@ -52,6 +54,7 @@ const EditUserPage = () => {
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                className="bg-dark text-white"
                 type="email"
                 placeholder="Enter email"
                 value={email}
@@ -62,6 +65,7 @@ const EditUserPage = () => {
             <Form.Group controlId="address">
               <Form.Label>Address</Form.Label>
               <Form.Control
+                className="bg-dark text-white"
                 type="text"
                 placeholder="Enter address"
                 value={address}
@@ -72,7 +76,7 @@ const EditUserPage = () => {
             <Button variant="primary" type="submit">
               Update Profile
             </Button>
-            <Button variant="secondary" onClick={() => navigate("/user")}>
+            <Button variant="outline-light" onClick={() => navigate("/user")} className="ml-2">
               Cancel
             </Button>
           </Form>

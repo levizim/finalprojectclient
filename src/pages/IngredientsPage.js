@@ -10,11 +10,11 @@ const IngredientsPage = () => {
     { name: "Turkey Tail", image: "/path/to/turkey-tail.jpg", text: "Turkey Tail mushroom is recognized for its immune-supportive properties. It contains compounds that may help promote overall wellness." },
     { name: "Shiitake", image: "/path/to/shiitake.jpg", text: "Shiitake mushrooms are popular for their rich flavor and potential health benefits. They contain various nutrients and bioactive compounds." },
   ];
-
   return (
-    <div>
+    <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
 
-      <section className="container mt-4">
+      <section className="container ">
+        <h2 className="text-center py-3">Ingredients</h2>
         {ingredients.map((ingredient, index) => (
           <div
             key={ingredient.name}
@@ -25,18 +25,17 @@ const IngredientsPage = () => {
                 src={ingredient.image}
                 alt={ingredient.name}
                 className="img-fluid"
+                style={{ borderRadius: '10px', boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.15)' }}
               />
             </div>
-            <div className="col-md-6">
-              <h2>{ingredient.name}</h2>
+            <div className="col-md-6 d-flex flex-column justify-content-center">
+              <h3>{ingredient.name}</h3>
               <p>{ingredient.text}</p>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Footer */}
-      {/* <Footer /> */}
     </div>
   );
 };

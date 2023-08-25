@@ -29,9 +29,9 @@ function SignInPage() {
     };
 
     return (
-        <div>
-            <Container className="mt-4">
-                <h1>Sign In</h1>
+        <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
+            <Container>
+                <h1 className="text-center mb-4">Sign In</h1>
                 {loginError && <Alert variant="danger">{loginError}</Alert>}
                 <Form>
                     <Form.Group controlId="formEmail">
@@ -44,12 +44,12 @@ function SignInPage() {
                         <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button variant="primary" type="button" onClick={handleLogin}>
+                    <Button variant="primary" type="button" onClick={handleLogin} className="mr-2">
                         Login
                     </Button>
                 </Form>
                 <p className="mt-2">
-                    Don't have an account? <Link to="/register">Register here</Link>
+                    Don't have an account? <Link to="/register" className="text-warning">Register here</Link>
                 </p>
             </Container>
         </div>

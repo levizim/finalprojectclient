@@ -10,19 +10,18 @@ const ProductsPage = () => {
   ];
 
   return (
-    <div>
+    <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
 
-
-      <section className="container mt-4">
+      <section className="container py-5">
         <div className="row">
           {products.map((product) => (
             <Link
-              to={`/productdetails/${product.id}`} // Use the appropriate route for product details
+              to={`/productdetails/${product.id}`}
               key={product.id}
-              className="col-md-4 mb-4 text-decoration-none"
+              className="col-md-4 mb-4 text-decoration-none text-dark"
             >
-              <div className="card">
-                <img src={product.image} className="card-img-top" alt={product.name} />
+              <div className="card bg-secondary">
+                <img src={product.image} className="card-img-top rounded-top" alt={product.name} />
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
                   <p className="card-text">${product.price}</p>
@@ -34,8 +33,7 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      {/* <Footer /> */}
+
     </div>
   );
 };
