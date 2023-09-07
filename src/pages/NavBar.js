@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
-import { useAuth } from "../sessions/authContext";
+import { useAuth } from "../UserAuth/authContext";
 import logo from "./images/logo.png";
 
 function NavBar() {

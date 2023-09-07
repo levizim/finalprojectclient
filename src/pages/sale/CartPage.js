@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
-import cartPage from './images/cartPage.png';  // adjust this path as needed
+import cartPage from '../images/cartPage.png';  // adjust this path as needed
 
 function CartPage() {
   return (

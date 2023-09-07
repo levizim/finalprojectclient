@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { useAuth } from '../sessions/authContext';
-import { updateUser } from '../api/userApi'; // Ensure the path is correctly set based on your folder structure.
+import { useAuth } from '../../UserAuth/authContext';
+import { updateUser } from '../../api/userApi'; // Ensure the path is correctly set based on your folder structure.
 
 const EditUserPage = () => {
   const { currentUser } = useAuth();

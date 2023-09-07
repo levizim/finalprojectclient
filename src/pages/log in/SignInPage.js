@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
-import { loginUser as apiLoginUser } from '../api/userApi'; 
-import { useAuth } from '../sessions/authContext'; // Import the hook
+import { loginUser as apiLoginUser } from '../../api/userApi'; 
+import { useAuth } from '../../UserAuth/authContext'; // Import the hook
 
 function SignInPage() {
     const [email, setEmail] = useState('');
@@ -51,6 +51,9 @@ function SignInPage() {
                 <p className="mt-2">
                     Don't have an account? <Link to="/register" className="text-warning">Register here</Link>
                 </p>
+                <p className="mt-2">
+                <Link to="/Forgot" className="text-warning">Forgot Password?</Link>
+            </p>
             </Container>
         </div>
     );

@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-
+import pr1 from "..//images/3D1.jpg"
 const ProductDetailsPage = () => {
   const { productId } = useParams(); // Get the product ID from the URL parameter
 
   // Replace this with actual product data retrieval based on productId
   const product = {
     id: 1,
-    name: "Product 1",
+    name: "Mushroom Coffee",
     price: 19.99,
-    image: "/path/to/product1.jpg",
+    image: pr1,
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     reviews: [
       { id: 1, author: "User 1", rating: 4, comment: "Great product!" },

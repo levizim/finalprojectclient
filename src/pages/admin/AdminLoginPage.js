@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
-import adminLogin from './images/adminLogin.png'; 
+import adminLogin from '../images/adminLogin.png'; 
 
 function AdminLoginPage() {
   return (

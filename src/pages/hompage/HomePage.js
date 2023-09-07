@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import homeimage from "./images/homePage.jpeg"
+import homeimage from "../images/homePage.jpeg"
 const HomePage = () => {
   const topSellingProducts = [
     { id: 1, name: "Coffee", price: 19.99 },

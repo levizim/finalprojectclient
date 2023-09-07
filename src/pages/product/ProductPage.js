@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import pr1 from ".//images/3D1.jpg"
+import pr1 from "..//images/3D1.jpg"
 const ProductsPage = () => {
   const products = [
     { id: 1, name: "Product 1", price: 19.99, image: pr1 },

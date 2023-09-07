@@ -1,24 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProductPage from "./pages/ProductPage";
-import CartPage from "./pages/CartPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import ReceiptPage from "./pages/ReceiptPage";
-import SignInPage from "./pages/SignInPage";
-import UserPage from "./pages/UserPage";
+import HomePage from "./pages/hompage/HomePage";
+import ProductPage from "./pages/product/ProductPage";
+import CartPage from "./pages/sale/CartPage";
+import CheckoutPage from "./pages/sale/CheckoutPage";
+import ReceiptPage from "./pages/sale/ReceiptPage";
+import SignInPage from "./pages/log in/SignInPage";
+import UserPage from "./pages/user/UserPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import AdminLoginPage from "./pages/AdminLoginPage";
-import AdminPage from "./pages/AdminPage";
-import AdminResponsePage from "./pages/AdminResponsePage";
-import EditUserPage from "./pages/EditUserPage";
-import EducationPage from "./pages/EducationPage";
-import IngredientsPage from "./pages/IngredientsPage";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
-import RegisterUserPage from "./pages/RegisterUserPage";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminPage from "./pages/admin/AdminPage";
+import AdminResponsePage from "./pages/admin/AdminResponsePage";
+import EditUserPage from "./pages/sale/EditUserPage";
+import EducationPage from "./pages/hompage/EducationPage";
+import IngredientsPage from "./pages/hompage/IngredientsPage";
+import ProductDetailsPage from "./pages/product/ProductDetailsPage";
+import RegisterUserPage from "./pages/user/RegisterUserPage";
 import Navigation from "./pages/NavBar";
-import { AuthProvider } from './sessions/authContext';
-import PrivateRoute from './sessions/PrivateRoute';
+import Forgot from './pages/log in/Forgot';
+import ResetPW from './pages/log in/resetPW';
+import { AuthProvider } from './UserAuth/authContext';
+import PrivateRoute from './UserAuth/PrivateRoute';
+
 
 function App() {
   return (
@@ -41,6 +44,8 @@ function App() {
         <Route path="/ingredients" element={<IngredientsPage />} />
         <Route path="/productdetails/:productId" element={<ProductDetailsPage />} />
         <Route path="/register" element={<RegisterUserPage />} />
+        <Route path="/Forgot" element={<Forgot />} />
+        <Route path="/reset/:token" element={<ResetPW />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </AuthProvider>

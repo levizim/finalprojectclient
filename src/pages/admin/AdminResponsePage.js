@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
-import adminResponse from './images/adminresponse.png'; 
+import adminResponse from '../images/adminresponse.png'; 
 
 function AdminResponsePage() {
   return (
