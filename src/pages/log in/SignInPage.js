@@ -17,6 +17,10 @@ function SignInPage() {
             const user = await apiLoginUser({ email, password });
             console.log("User logged in:", user);
             
+            if (user.token) {
+                localStorage.setItem('authToken', user.token); // Storing the JWT token
+            }
+
             setCurrentUser(user); // Set the current user upon successful login
 
             // Reset any login errors upon successful login
@@ -52,8 +56,8 @@ function SignInPage() {
                     Don't have an account? <Link to="/register" className="text-warning">Register here</Link>
                 </p>
                 <p className="mt-2">
-                <Link to="/Forgot" className="text-warning">Forgot Password?</Link>
-            </p>
+                    <Link to="/Forgot" className="text-warning">Forgot Password?</Link>
+                </p>
             </Container>
         </div>
     );

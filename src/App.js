@@ -11,7 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminPage from "./pages/admin/AdminPage";
 import AdminResponsePage from "./pages/admin/AdminResponsePage";
-import EditUserPage from "./pages/sale/EditUserPage";
+import EditUserPage from "./pages/user/EditUserPage";
 import EducationPage from "./pages/hompage/EducationPage";
 import IngredientsPage from "./pages/hompage/IngredientsPage";
 import ProductDetailsPage from "./pages/product/ProductDetailsPage";

@@ -5,8 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../../UserAuth/authContext';
 
 const UserPage = () => {
-    const { currentUser } = useAuth();
+
+    const { currentUser, } = useAuth();
     const [orders, setOrders] = useState([]);
+    console.log("UserPage -> Current User:", currentUser);
+
 
     // The useEffect is commented out but will retain the same.
     // useEffect(() => {
@@ -24,16 +27,16 @@ const UserPage = () => {
     //     fetchOrders();
     // }, [currentUser]);
 
-    return (
+    return ( 
         <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
             <section className="container ">
                 <div className="row">
                     {/* User Info */}
                     <div className="col-md-4">
                         <h2>User Info</h2>
-                        <p>Name: {currentUser?.UserName}</p>
-                        <p>Email: {currentUser?.Email}</p>
-                        <p>Address: {currentUser?.Address}</p>
+                        <p>Name: {currentUser?.user.UserName}</p>
+                        <p>Email: {currentUser?.user.Email}</p>
+                        <p>Address: {currentUser?.user.Address}</p>
                         <Link to="/edituser" className="btn btn-primary">
                             Edit Profile
                         </Link>

@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../../UserAuth/authContext';
-import { updateUser } from '../../api/userApi'; // Ensure the path is correctly set based on your folder structure.
+import { updateUser } from '../../api/userApi';
 
 const EditUserPage = () => {
-  const { currentUser } = useAuth();
+  
+  const { currentUser, storeCurrentUser } = useAuth();  // Added setCurrentUser
+  console.log("currentUser:", currentUser);
+  
+  
   const [userName, setUserName] = useState(currentUser?.userName || '');
   const [email, setEmail] = useState(currentUser?.email || '');
   const [address, setAddress] = useState(currentUser?.address || '');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,8 +30,16 @@ const EditUserPage = () => {
     }
 
     try {
-      const response = await updateUser(currentUser.UserID, userData);
+      const response = await updateUser(currentUser.user.UserID, userData);
       alert(response.message);
+      console.log("EditUserPage -> Updated User:", response.user);
+
+      // Update the context's user data
+      if (response && response.user) {
+        storeCurrentUser(response.user); 
+      }
+      console.log("EditUserPage -> Updated User:", response.user);
+
       navigate("/user");
     } catch (error) {
       alert(error.message);
