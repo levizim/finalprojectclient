@@ -1,26 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getProductById } from '../../api/productApi';
-import { IMAGES, getDefaultImage } from '..//images/imageImport';
+import { IMAGES, getDefaultImage } from '../images/products/imageImport';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1); // For storing selected quantity
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [showNotification, setShowNotification] = useState(false);
 
   const defaultReviews = [
     { id: 1, author: "User 1", rating: 4, comment: "Great product!" },
     { id: 2, author: "User 2", rating: 5, comment: "Highly recommended!" },
   ];
+  const handleAddToCart = () => {
+    let currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    // Check if the product is already in the cart
+    const existingProductIndex = currentCart.findIndex(p => p.ProductID === product.ProductID);
+
+    if (existingProductIndex > -1) {
+        // If it is, update the quantity
+        currentCart[existingProductIndex].quantity += quantity;
+    } else {
+        // If not, add the product to the cart with the selected quantity
+        const productWithQuantity = { ...product, quantity: quantity, ImageName: product.ImageName};
+        currentCart.push(productWithQuantity);
+    }
+
+    // Update local storage
+    localStorage.setItem('cart', JSON.stringify(currentCart));
+
+    // Show notification
+    setShowNotification(true); 
+};
+  const handleNotificationOk = () => {
+    setShowNotification(false);
+    navigate('/products'); // Adjust to your products route
+  };
+
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       setIsLoading(true);
       setError(null);
-      
+
       try {
         const productData = await getProductById(productId);
         setProduct(productData);
@@ -53,15 +84,15 @@ const ProductDetailsPage = () => {
           <div className="col-md-6 d-flex flex-column justify-content-center">
             <h2>{product.ProductName}</h2>
             <p className="display-4">${product.Price}</p>
-            <div className="form-group">
+            < div className="form-group">
               <label htmlFor="quantity">Quantity:</label>
-              <select className="form-control" id="quantity">
+              <select className="form-control" id="quantity" value={quantity} onChange={handleQuantityChange}>
                 {[...Array(20)].map((_, index) => (
                   <option key={index + 1} value={index + 1}>{index + 1}</option>
                 ))}
               </select>
             </div>
-            <button className="btn btn-primary my-2 mr-2">Add to Cart</button>
+            <button className="btn btn-primary my-2 mr-2" onClick={handleAddToCart}>Add to Cart</button>
             <button className="btn btn-success my-2">Buy Now</button>
           </div>
         </div>
@@ -79,6 +110,26 @@ const ProductDetailsPage = () => {
           </div>
         ))}
       </section>
+
+      {showNotification && (
+    <div className="modal show d-block" tabIndex="-1" role="dialog">
+        <div className="modal-dialog">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">Notification</h5>
+                </div>
+                <div className="modal-body">
+                    <p>Add to cart successful!</p>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-primary" onClick={handleNotificationOk}>
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+)}
     </div>
   );
 };

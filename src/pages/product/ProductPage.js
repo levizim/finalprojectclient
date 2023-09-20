@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { IMAGES, getDefaultImage } from '..//images/imageImport';
+import { IMAGES, getDefaultImage } from '../images/products/imageImport';
 import { getAllProducts } from '../../api/productApi';  // <-- Importing the function
 
 const ProductsPage = () => {
