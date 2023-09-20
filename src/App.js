@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage";
 import ProductPage from "./pages/product/ProductPage";
-import CartPage from "./pages/sale/CartPage";
+import CartPage from "./pages/sale/Cart";
 import CheckoutPage from "./pages/sale/CheckoutPage";
 import ReceiptPage from "./pages/sale/ReceiptPage";
 import SignInPage from "./pages/log in/SignInPage";
@@ -21,11 +21,13 @@ import Forgot from './pages/log in/Forgot';
 import ResetPW from './pages/log in/resetPW';
 import { AuthProvider } from './UserAuth/authContext';
 import PrivateRoute from './UserAuth/PrivateRoute';
+import { CartProvider } from "./pages/sale/CartContext";
 
 
 function App() {
   return (
     <Router>
+      <CartProvider>
       <AuthProvider>
       <Navigation />
       <Routes>
@@ -49,6 +51,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </AuthProvider>
+      </CartProvider>
     </Router>
   );
 }
