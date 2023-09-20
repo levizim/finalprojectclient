@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/hompage/HomePage";
+import HomePage from "./pages/homepage/HomePage";
 import ProductPage from "./pages/product/ProductPage";
 import CartPage from "./pages/sale/CartPage";
 import CheckoutPage from "./pages/sale/CheckoutPage";
@@ -12,8 +12,8 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminPage from "./pages/admin/AdminPage";
 import AdminResponsePage from "./pages/admin/AdminResponsePage";
 import EditUserPage from "./pages/user/EditUserPage";
-import EducationPage from "./pages/hompage/EducationPage";
-import IngredientsPage from "./pages/hompage/IngredientsPage";
+import EducationPage from "./pages/homepage/EducationPage";
+import IngredientsPage from "./pages/homepage/IngredientsPage";
 import ProductDetailsPage from "./pages/product/ProductDetailsPage";
 import RegisterUserPage from "./pages/user/RegisterUserPage";
 import Navigation from "./pages/NavBar";

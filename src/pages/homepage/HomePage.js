@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import homeimage from "../images/homePage.jpeg"
+import homeimage from "../images/homePage.jpeg";
+import { getAllProducts } from '../../api/productApi'; // Import the getAllProducts function
+
 const HomePage = () => {
-  const topSellingProducts = [
-    { id: 1, name: "Coffee", price: 19.99 },
-    { id: 2, name: "Decaf", price: 29.99 },
-    { id: 3, name: "Tea", price: 14.99 },
-    { id: 4, name: "Green Tea", price: 16.99 },
-    { id: 5, name: "Espresso", price: 23.99 },
-    { id: 6, name: "Cappuccino", price: 24.99 },
-    { id: 7, name: "Latte", price: 22.99 },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await getAllProducts();
+      console.log(data);
+      setProducts(data.slice(0, 10)); // This will set only the first 10 products
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div style={{ backgroundColor: 'black', color: 'white' }}>
@@ -57,22 +61,22 @@ const HomePage = () => {
           </div>
 
           {/* Top Selling Products */}
-          <div className="col-md-6">
-            <h2>Top Selling Products</h2>
-            <ul className="list-group">
-              {topSellingProducts.map((product) => (
-                <li
-                  key={product.id}
-                  className="list-group-item d-flex justify-content-between align-items-center bg-dark text-white"
-                >
-                  {product.name}
-                  <span className="badge badge-primary badge-pill">
-                    ${product.price}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div className="col-md-6">
+          <h2>Top Selling Products</h2>
+          <ul className="list-group">
+            {products.map((product) => (
+              <li
+                key={product.ProductID}
+                className="list-group-item d-flex justify-content-between align-items-center bg-dark text-white"
+              >
+                {product.ProductName}
+                <span className="badge badge-primary badge-pill">
+                  ${product.Price}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         </div>
       </section>
