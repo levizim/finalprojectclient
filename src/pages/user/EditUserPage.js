@@ -34,7 +34,6 @@ const EditUserPage = () => {
       const response = await updateUser(currentUser.user.UserID, userData);
       alert(response.message);
       console.log("EditUserPage -> Updated User:", response.user)
-      storeCurrentUser(response.user);
       navigate("/user");
     } catch (error) {
       alert(error.message);
