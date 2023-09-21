@@ -20,8 +20,7 @@ export const AuthProvider = ({ children }) => {
         } else {
             localStorage.removeItem('currentUser');
         }
-        setCurrentUser(user);
-        console.log("Current User after set:", currentUser);
+        setCurrentUser({ ...user });  // Create a new object reference
     };
     
     // Added a login function to manage authentication within context

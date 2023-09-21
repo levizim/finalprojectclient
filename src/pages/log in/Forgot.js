@@ -1,6 +1,6 @@
-// Forgot.js
 import React, { useState } from 'react';
 import { requestPasswordReset } from '../../api/userApi';
+
 const Forgot = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -19,17 +19,20 @@ const Forgot = () => {
     };
 
     return (
-        <div>
+        <div className="bg-dark text-white" style={{ minHeight: '100vh', padding: '2rem' }}>
             <h2>Forgot Password</h2>
             <form onSubmit={handleSubmit}>
                 <input
+                    style={{ backgroundColor: '#333', color: 'white', padding: '0.5rem', marginBottom: '1rem', border: '1px solid #555', borderRadius: '5px' }}
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
                 />
-                <button type="submit">Request Reset Link</button>
+                <button style={{ backgroundColor: '#007BFF', color: 'white', padding: '0.5rem 1rem', border: 'none', borderRadius: '5px', cursor: 'pointer' }} type="submit">
+                    Request Reset Link
+                </button>
             </form>
             {message && <p>{message}</p>}
             {error && <p style={{ color: 'red' }}>{error}</p>}

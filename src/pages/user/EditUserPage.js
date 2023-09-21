@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../../UserAuth/authContext';
-import { updateUser } from '../../api/userApi';
+import { updateUser,} from '../../api/userApi';
 
 const EditUserPage = () => {
   
-  const { currentUser, storeCurrentUser } = useAuth();  // Added setCurrentUser
+  const { currentUser, storeCurrentUser } = useAuth();  // Corrected from setCurrentUser
+ // Added setCurrentUser
   console.log("currentUser:", currentUser);
   
   
@@ -32,14 +33,8 @@ const EditUserPage = () => {
     try {
       const response = await updateUser(currentUser.user.UserID, userData);
       alert(response.message);
-      console.log("EditUserPage -> Updated User:", response.user);
-
-      // Update the context's user data
-      if (response && response.user) {
-        storeCurrentUser(response.user); 
-      }
-      console.log("EditUserPage -> Updated User:", response.currentUser.user);
-
+      console.log("EditUserPage -> Updated User:", response.user)
+      storeCurrentUser(response.user);
       navigate("/user");
     } catch (error) {
       alert(error.message);

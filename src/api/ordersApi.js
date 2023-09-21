@@ -10,9 +10,9 @@ const apiClient = axios.create({
 });
 
 // Utility functions to manage the JWT
-const setToken = (token) => {
-    localStorage.setItem('authToken', token);
-}
+//const setToken = (token) => {
+//    localStorage.setItem('authToken', token);
+//}
 
 const getAuthToken = () => {
     return localStorage.getItem('authToken');

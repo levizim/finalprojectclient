@@ -86,28 +86,8 @@ const HomePage = () => {
           <div className="col-md-12">
             <h2>About Us</h2>
             <p>
-            Dedicated to Quality
-Welcome to our mushroom coffee business! We are a group of five friends who have come together to share our love for mushrooms and coffee. With a shared passion for health and wellness, we have created a unique line of mushroom-infused coffees.
-
-
-
-Our goal is simple: to provide you with a delicious and health-conscious coffee experience. By carefully selecting the finest coffee beans and combining them with premium mushroom extracts, we have crafted blends that offer both great taste and potential wellness benefits.
-
-
-
-We take pride in sourcing our mushrooms from trusted suppliers who uphold high standards of cultivation and extraction. This ensures that each cup of our mushroom coffee delivers the best possible quality and flavor.
-
-
-
-Our mushroom coffees are designed to support your well-being. Whether you're seeking an energy boost, immune system support, or mental clarity, our blends offer a natural and convenient way to incorporate the power of mushrooms into your daily routine.
-
-
-
-We are excited to share our passion with you and invite you to join us on this journey. Together, let's discover the unique flavors and potential health benefits that our mushroom coffees have to offer.
-
-
-
-Thank you for choosing our mushroom coffee. Cheers to good friends and a healthier you!
+            Quality in Every Cup
+Discover the fusion of mushrooms and coffee, crafted by enthusiasts with a flair for wellness. Our brews merge the finest beans with choice mushroom extracts, aiming to boost energy, immunity, and clarity. Dive into a unique blend of flavor and health. Cheers to a mindful sip!
             </p>
           </div>
         </div>

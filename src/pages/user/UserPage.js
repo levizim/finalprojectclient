@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../../UserAuth/authContext';
 import { getAllOrdersForUser } from '../../api/ordersApi';
@@ -46,7 +45,7 @@ const UserPage = () => {
                 <ul className="list-group bg-dark text-white">
                     {orders.map((order) => (
                         <li key={order.OrderID} className="list-group-item bg-dark text-white">
-                            Order #{order.OrderID} - Date:  {new Date(order.Date).toLocaleDateString()} - Total: ${order.Total}
+                            Order #{order.OrderID} - Date: {new Date(order.Date).toLocaleDateString()} - Total: ${order.Total}
                             <br />
                             <Link to={`/leavereview/${order.OrderID}`}>Leave Review</Link>
                         </li>
