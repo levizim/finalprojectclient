@@ -23,42 +23,39 @@ const HomePage = () => {
       <section className="container">
         <div className="row">
 
-          {/* Image with Circle Inside */}
-          <div className="col-md-6 text-center position-relative">
-            <div style={{border: '5px double white'}}>
-              <img 
-                src={homeimage}
-                alt="home" 
-                className="img-fluid" 
-                style={{width: '100%', height: 'auto', display: 'block'}}
-              />
-            </div>
-            <div style={{
-              position: 'absolute', 
-              top: '50%', 
-              left: '50%', 
-              transform: 'translate(-50%, -50%)', 
-              borderRadius: '50%', 
-              backgroundColor: 'rgba(128, 128, 128, 0.7)', 
-              padding: '10px',
-              width: '150px',
-              height: '150px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <Link to="/products" style={{ 
-                  color: 'white', 
-                  textDecoration: 'none', 
-                  padding: '5px 10px', 
-                  border: '2px solid yellow', 
-                  borderRadius: '5px',
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)'
-              }}>
-                Buy Now
-              </Link>
-            </div>
-          </div>
+       {/* Image with Circle Inside */}
+<div className="col-md-6 text-center position-relative d-flex align-items-center justify-content-center" style={{overflow: 'hidden'}}>
+    <div style={{border: '5px double white', width: '100%'}}>
+        <img 
+            src={homeimage}
+            alt="home" 
+            className="img-fluid" 
+            style={{display: 'block', width: '100%'}}
+        />
+    </div>
+    <div style={{
+        position: 'absolute', 
+        borderRadius: '50%', 
+        backgroundColor: 'rgba(128, 128, 128, 0.7)', 
+        padding: '2vw',
+        width: '20vw',
+        height: '20vw',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }}>
+        <Link to="/products" style={{ 
+            color: 'white', 
+            textDecoration: 'none', 
+            padding: '5px 10px', 
+            border: '2px solid yellow', 
+            borderRadius: '5px',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }}>
+            Buy Now
+        </Link>
+    </div>
+</div>
 
           {/* Top Selling Products */}
               <div className="col-md-6">

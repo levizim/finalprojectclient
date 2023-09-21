@@ -109,37 +109,31 @@ const ProductDetailsPage = () => {
       </section>
 
       <section className="container mt-4">
-        <h3>Reviews</h3>
-        {defaultReviews.map((review) => (
-          <div key={review.id} className="card bg-secondary mb-3">
-            <div className="card-body">
-              <h5 className="card-title">{review.author}</h5>
-              <p className="card-text">{review.comment}</p>
-              <p className="card-text">Rating: {review.rating} stars</p>
-            </div>
-          </div>
-        ))}
-      </section>
+  <h3>Reviews</h3>
+  {defaultReviews.map((review) => (
+    <div key={review.id} className="card bg-white mb-3 text-dark">
+      <div className="card-body">
+        <h5 className="card-title">{review.author}</h5>
+        <p className="card-text">{review.comment}</p>
+        <p className="card-text">Rating: {review.rating} stars</p>
+      </div>
+    </div>
+  ))}
+</section>
 
-      {showNotification && (
-    <div className="modal show d-block" tabIndex="-1" role="dialog">
-        <div className="modal-dialog">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title">Notification</h5>
-                </div>
-                <div className="modal-body">
-                    <p>Add to cart successful!</p>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-primary" onClick={handleNotificationOk}>
-                        OK
-                    </button>
-                </div>
-            </div>
+{showNotification && (
+    <>
+    <div style={{position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(50, 50, 50, 0.75)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div style={{backgroundColor: 'grey', borderRadius: '5px', padding: '40px', maxWidth: '80%', zIndex: 10000, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <p style={{color: 'black', fontSize: '24px', marginBottom: '20px'}}>Add to cart successful!</p>
+            <button type="button" className="btn btn-primary" onClick={handleNotificationOk}>
+                OK
+            </button>
         </div>
     </div>
+    </>
 )}
+
     </div>
   );
 };
