@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { IMAGES, getDefaultImage } from '../images/products/imageImport';
+import { useAuth } from '../../UserAuth/authContext';  // Import the user authentication context
 
 const CartPage = () => {
     const [cart, setCart] = useState([]);
     const navigate = useNavigate();
+    const { currentUser } = useAuth();  // Get the current user from the authentication context
 
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -31,6 +33,14 @@ const CartPage = () => {
         });
         setCart(newCart);
         localStorage.setItem('cart', JSON.stringify(newCart));
+    };
+
+    const navigateToCheckout = () => {
+        if (currentUser) {
+            navigate('/checkout'); // If user is logged in, navigate to the checkout page
+        } else {
+            navigate('/signin');  // If user is not logged in, navigate to the sign-in page
+        }
     };
 
     const subtotal = cart.reduce((sum, item) => sum + (item.Price * item.quantity), 0);
@@ -88,7 +98,7 @@ const CartPage = () => {
                     <h4>Subtotal: ${subtotal.toFixed(2)}</h4>
                 </div>
                 <div className="d-flex justify-content-end mt-4">
-                    <button className="btn btn-success">Checkout</button>
+                    <button className="btn btn-success" onClick={navigateToCheckout}>Checkout</button>
                 </div>
             </section>
         </div>

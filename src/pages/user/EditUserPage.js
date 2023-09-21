@@ -38,7 +38,7 @@ const EditUserPage = () => {
       if (response && response.user) {
         storeCurrentUser(response.user); 
       }
-      console.log("EditUserPage -> Updated User:", response.user);
+      console.log("EditUserPage -> Updated User:", response.currentUser.user);
 
       navigate("/user");
     } catch (error) {

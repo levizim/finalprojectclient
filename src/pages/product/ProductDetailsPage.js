@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getProductById } from '../../api/productApi';
 import { IMAGES, getDefaultImage } from '../images/products/imageImport';
+import { useAuth } from '../../UserAuth/authContext';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -12,7 +13,16 @@ const ProductDetailsPage = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
+  const { currentUser } = useAuth();  // Get the current user from the authentication context
 
+  const handleBuyNow = () => {
+    if (currentUser) {
+      handleAddToCart(); // Add to cart
+      navigate('/checkout'); // Navigate directly to checkout
+    } else {
+      navigate('/signin');  // If user is not logged in, navigate to the sign-in page
+    }
+  };
   const defaultReviews = [
     { id: 1, author: "User 1", rating: 4, comment: "Great product!" },
     { id: 2, author: "User 2", rating: 5, comment: "Highly recommended!" },
@@ -93,7 +103,7 @@ const ProductDetailsPage = () => {
               </select>
             </div>
             <button className="btn btn-primary my-2 mr-2" onClick={handleAddToCart}>Add to Cart</button>
-            <button className="btn btn-success my-2">Buy Now</button>
+            <button className="btn btn-success my-2" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </section>

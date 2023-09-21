@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import homeimage from "../images/homePage.jpeg";
-import { getAllProducts } from '../../api/productApi'; // Import the getAllProducts function
+import { getBestSellingProducts } from '../../api/productApi'; // Import the getAllProducts function
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await getAllProducts();
-      console.log(data);
-      setProducts(data.slice(0, 10)); // This will set only the first 10 products
+      const data = await getBestSellingProducts();
+      console.log(data)
+      setProducts(data); 
     };
 
     fetchProducts();
@@ -69,7 +69,7 @@ const HomePage = () => {
                 key={product.ProductID}
                 className="list-group-item d-flex justify-content-between align-items-center bg-dark text-white"
               >
-                {product.ProductName}
+                {product.ProductName} - {product.TotalOrderedQuantity} units
                 <span className="badge badge-primary badge-pill">
                   ${product.Price}
                 </span>

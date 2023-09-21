@@ -3,29 +3,27 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../../UserAuth/authContext';
-
+import { getAllOrdersForUser } from '../../api/ordersApi';
 const UserPage = () => {
-
-    const { currentUser, } = useAuth();
+    const { currentUser } = useAuth();
     const [orders, setOrders] = useState([]);
     console.log("UserPage -> Current User:", currentUser);
 
-
-    // The useEffect is commented out but will retain the same.
-    // useEffect(() => {
-    //     const fetchOrders = async () => {
-    //         try {
-    //             if (currentUser) {
-    //                 const response = await axios.get(`/api/orders?userId=${currentUser.id}`);
-    //                 setOrders(response.data);
-    //             }
-    //         } catch (error) {
-    //             console.error("Failed to fetch orders:", error.message);
-    //         }
-    //     };
-
-    //     fetchOrders();
-    // }, [currentUser]);
+    useEffect(() => {
+        // Check if the user is logged in
+        if (currentUser?.user?.UserID) {
+            // Fetch orders for the current user
+            const fetchOrders = async () => {
+                try {
+                    const userOrders = await getAllOrdersForUser(currentUser.user.UserID); 
+                    setOrders(userOrders);
+                } catch (error) {
+                    console.error("Error fetching orders:", error);
+                }
+            };
+            fetchOrders();
+        }
+    }, [currentUser]); 
 
     return ( 
         <div className="bg-dark text-white" style={{ minHeight: '100vh' }}>
@@ -43,18 +41,18 @@ const UserPage = () => {
                     </div>
 
                     {/* Order History */}
-                    <div className="col-md-4">
-                        <h2>Order History</h2>
-                        <ul className="list-group bg-dark text-white">
-                            {orders.map((order) => (
-                                <li key={order.id} className="list-group-item bg-dark text-white">
-                                    Order #{order.id} - Date: {order.dateOrdered} - Total: ${order.total}
-                                    <br />
-                                    <Link to={`/leavereview/${order.id}`}>Leave Review</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+            <div className="col-md-4">
+                <h2>Order History</h2>
+                <ul className="list-group bg-dark text-white">
+                    {orders.map((order) => (
+                        <li key={order.OrderID} className="list-group-item bg-dark text-white">
+                            Order #{order.OrderID} - Date:  {new Date(order.Date).toLocaleDateString()} - Total: ${order.Total}
+                            <br />
+                            <Link to={`/leavereview/${order.OrderID}`}>Leave Review</Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
                     {/* Contact Admin */}
                     <div className="col-md-4">

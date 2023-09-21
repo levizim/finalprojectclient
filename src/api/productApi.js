@@ -1,14 +1,19 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/products';
-
+const base2 = 'http://localhost:3000/api/special'
 const apiClient = axios.create({
     baseURL: BASE_URL,
     headers: {
         'Content-Type': 'application/json'
     }
 });
-
+const apiSpecial = axios.create({
+    baseURL: base2,
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
 // Pulling out the token functionality
 //const getAuthToken = () => {
 //    return localStorage.getItem('authToken');
@@ -78,6 +83,15 @@ export const updateProduct = async (id, updatedProduct) => {
 export const deleteProduct = async (id) => {
     try {
         const response = await apiClient.delete(`/${id}`);
+        return response.data;
+    } catch (error) {
+        handleApiError(error);
+    }
+};
+
+export const getBestSellingProducts = async () => { 
+    try {
+        const response = await apiSpecial.get('/best-sellers')
         return response.data;
     } catch (error) {
         handleApiError(error);

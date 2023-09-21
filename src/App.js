@@ -21,13 +21,12 @@ import Forgot from './pages/log in/Forgot';
 import ResetPW from './pages/log in/resetPW';
 import { AuthProvider } from './UserAuth/authContext';
 import PrivateRoute from './UserAuth/PrivateRoute';
-import { CartProvider } from "./pages/sale/CartContext";
+
 
 
 function App() {
   return (
     <Router>
-      <CartProvider>
       <AuthProvider>
       <Navigation />
       <Routes>
@@ -51,7 +50,6 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </AuthProvider>
-      </CartProvider>
     </Router>
   );
 }
